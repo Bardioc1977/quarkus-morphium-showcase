@@ -47,7 +47,7 @@
         <quarkus.platform.version>3.32.1</quarkus.platform.version>
         <quarkus-morphium.version>1.0.0-SNAPSHOT</quarkus-morphium.version>
         <compiler-plugin.version>3.13.0</compiler-plugin.version>
-        <surefire-plugin.version>3.5.2</surefire-plugin.version>
+        <surefire-plugin.version>3.5.5</surefire-plugin.version>
         <lombok.version>1.18.42</lombok.version>
     </properties>
 
