@@ -887,42 +887,9 @@ table tr:hover td {
     z-index: 1;
 }
 
-/* Warning alert variant */
-.alert-warning {
-    background: #ffeaa7;
-    border: 1px solid #fdcb6e;
-    color: #2d3436;
-    padding: 1rem 1.25rem;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
-    line-height: 1.5;
-}
-
-[data-theme="dark"] .alert-warning {
-    background: #3d3520;
-    border-color: #a68b2c;
-    color: #f5f6fa;
-}
-
+/* Dark mode for compat badges */
 [data-theme="dark"] .compat-badge,
 [data-theme="dark"] .compat-overlay {
     background: #a68b2c;
     color: #f5f6fa;
-}
-
-/* Info alert variant */
-.alert-info {
-    background: #dfe6e9;
-    border: 1px solid #b2bec3;
-    color: #2d3436;
-    padding: 1rem 1.25rem;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
-    line-height: 1.5;
-}
-
-[data-theme="dark"] .alert-info {
-    background: #2d3436;
-    border-color: #636e72;
-    color: #dfe6e9;
 }
