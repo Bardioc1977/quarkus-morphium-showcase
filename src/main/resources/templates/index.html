@@ -5,6 +5,13 @@
     <p>Interactive demo of all Morphium features with Quarkus, Qute templates and HTMX</p>
 </div>
 
+{#if backend:isCosmosDB}
+<div class="alert alert-info">
+    Connected to <strong>{backend:displayName}</strong>. Some features have limited support &mdash;
+    affected modules are marked below.
+</div>
+{/if}
+
 <div class="card-grid">
     <a href="/catalog" class="feature-card">
         <div class="feature-icon">&#128230;</div>
@@ -66,7 +73,8 @@
         </div>
     </a>
 
-    <a href="/bank" class="feature-card">
+    <a href="/bank" class="feature-card{#if backend:isCosmosDB} feature-limited{/if}">
+        {#if backend:isCosmosDB}<div class="compat-overlay">limited</div>{/if}
         <div class="feature-icon">&#127974;</div>
         <h3>Bank / Wallet</h3>
         <p>Transactions with @MorphiumTransactional, atomic inc/dec operations and version-based locking.</p>
@@ -77,7 +85,8 @@
         </div>
     </a>
 
-    <a href="/audit" class="feature-card">
+    <a href="/audit" class="feature-card{#if backend:isCosmosDB} feature-limited{/if}">
+        {#if backend:isCosmosDB}<div class="compat-overlay">limited</div>{/if}
         <div class="feature-icon">&#128203;</div>
         <h3>Audit Log</h3>
         <p>Capped collections, tailable cursors and lifecycle callbacks for automatic logging.</p>

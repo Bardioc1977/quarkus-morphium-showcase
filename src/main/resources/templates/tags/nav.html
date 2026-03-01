@@ -2,6 +2,7 @@
     <div class="sidebar-header">
         <h2>Quarkus Morphium Showcase</h2>
         <span class="version">Quarkus + Morphium ORM</span>
+        <span class="backend-badge">{backend:displayName}</span>
     </div>
     <nav>
         <a href="/" class="{#if active == 'home'}active{/if}">
@@ -28,9 +29,11 @@
         </a>
         <a href="/bank" class="{#if active == 'bank'}active{/if}">
             <span class="nav-icon">&#127974;</span> Bank / Wallet
+            {#if backend:isCosmosDB}<span class="compat-badge">limited</span>{/if}
         </a>
         <a href="/audit" class="{#if active == 'audit'}active{/if}">
             <span class="nav-icon">&#128203;</span> Audit Log
+            {#if backend:isCosmosDB}<span class="compat-badge">limited</span>{/if}
         </a>
 
         <div class="nav-section">Documentation</div>

@@ -828,3 +828,101 @@ table tr:hover td {
 .service-code-card .code-block {
     margin-top: 0.75rem;
 }
+
+/* Backend Badge (sidebar) */
+.backend-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border-radius: 10px;
+    background: var(--accent);
+    color: #fff;
+    margin-top: 0.25rem;
+    letter-spacing: 0.02em;
+}
+
+/* Compat Badge (nav items) */
+.compat-badge {
+    font-size: 0.6rem;
+    font-weight: 600;
+    padding: 0.1rem 0.35rem;
+    border-radius: 8px;
+    background: #fdcb6e;
+    color: #2d3436;
+    margin-left: 0.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    vertical-align: middle;
+}
+
+/* Feature card limited state */
+.feature-limited {
+    position: relative;
+    opacity: 0.85;
+}
+
+.feature-limited::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px dashed #fdcb6e;
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+/* Compat overlay badge on feature cards */
+.compat-overlay {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.15rem 0.5rem;
+    border-radius: 8px;
+    background: #fdcb6e;
+    color: #2d3436;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    z-index: 1;
+}
+
+/* Warning alert variant */
+.alert-warning {
+    background: #ffeaa7;
+    border: 1px solid #fdcb6e;
+    color: #2d3436;
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+[data-theme="dark"] .alert-warning {
+    background: #3d3520;
+    border-color: #a68b2c;
+    color: #f5f6fa;
+}
+
+[data-theme="dark"] .compat-badge,
+[data-theme="dark"] .compat-overlay {
+    background: #a68b2c;
+    color: #f5f6fa;
+}
+
+/* Info alert variant */
+.alert-info {
+    background: #dfe6e9;
+    border: 1px solid #b2bec3;
+    color: #2d3436;
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+[data-theme="dark"] .alert-info {
+    background: #2d3436;
+    border-color: #636e72;
+    color: #dfe6e9;
+}

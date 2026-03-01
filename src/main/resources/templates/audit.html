@@ -5,6 +5,14 @@
     <p>Capped collections, lifecycle callbacks and automatic logging</p>
 </div>
 
+{#if backend:isCosmosDB}
+<div class="alert alert-warning">
+    <strong>CosmosDB:</strong> <code>@Capped</code> collections are not supported.
+    The audit log uses a regular collection. There is no automatic size-based eviction
+    &mdash; old entries must be cleaned up manually or via TTL index.
+</div>
+{/if}
+
 <div class="card">
     <h3>Morphium Features Demonstrated</h3>
     <div class="tags">
@@ -89,6 +97,18 @@ morphium.createQueryFor(<span class="type">AuditEntry</span>.<span class="keywor
     </div>
 
     <div class="card">
+        {#if backend:isCosmosDB}
+        <h3>About This Audit Log (CosmosDB)</h3>
+        <p style="font-size:0.88rem; color:#636e72; line-height:1.6">
+            On CosmosDB, <code>@Capped</code> annotations are ignored and a regular collection
+            is created instead. The audit log still functions normally for writes and queries,
+            but there is no automatic eviction of old entries.
+        </p>
+        <p style="font-size:0.88rem; color:#636e72; line-height:1.6">
+            Consider using a <strong>TTL index</strong> or a scheduled cleanup job to manage
+            collection growth on CosmosDB.
+        </p>
+        {#else}
         <h3>About Capped Collections</h3>
         <p style="font-size:0.88rem; color:#636e72; line-height:1.6">
             Capped collections are fixed-size collections that maintain insertion order.
@@ -103,6 +123,7 @@ morphium.createQueryFor(<span class="type">AuditEntry</span>.<span class="keywor
             This audit log is capped at <strong>10 MB</strong> or <strong>10,000 entries</strong>,
             whichever limit is reached first.
         </p>
+        {/if}
     </div>
 </div>
 

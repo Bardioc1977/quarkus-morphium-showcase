@@ -5,6 +5,14 @@
     <p>Transactions with @MorphiumTransactional, atomic inc/dec and optimistic locking</p>
 </div>
 
+{#if backend:isCosmosDB}
+<div class="alert alert-warning">
+    <strong>CosmosDB:</strong> Transactions (<code>@MorphiumTransactional</code>) are not supported.
+    Transfers execute without rollback guarantee. Deposits and withdrawals use atomic <code>inc()</code>
+    operations and work normally.
+</div>
+{/if}
+
 <div class="card">
     <h3>Morphium Features Demonstrated</h3>
     <div class="tags">
@@ -107,7 +115,7 @@
 
     <!-- Transfer -->
     <div class="card">
-        <h3>Transfer Money</h3>
+        <h3>Transfer Money {#if backend:isCosmosDB}<span class="tag tag-orange">No Transaction</span>{/if}</h3>
         <form action="/bank/transfer" method="post">
             <div class="form-group">
                 <label>From Account</label>
