@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "quarkus-dev-quarkus-morphium-showcase": {
+      "type": "sse",
+      "url": "http://localhost:8080/q/dev-mcp",
+      "_managedBy": "agent-d"
+    }
+  }
+}
