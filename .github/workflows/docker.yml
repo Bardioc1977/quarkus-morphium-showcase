@@ -72,3 +72,47 @@ jobs:
           secrets: |
             GITHUB_ACTOR=${{ github.actor }}
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    if: >-
+      github.ref == 'refs/heads/main' ||
+      (github.event_name == 'workflow_run' && github.event.workflow_run.head_branch == 'main')
+
+    steps:
+      - name: Checkout (for compose file)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+
+      - name: Copy compose file to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          source: "docker-compose.prod.yml"
+          target: "/opt/morphium-showcase/"
+          overwrite: true
+
+      - name: Deploy to Hetzner
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          script: |
+            cd /opt/morphium-showcase
+
+            # Use the prod compose file
+            cp -f docker-compose.prod.yml docker-compose.yml
+
+            # Pull latest image (public GHCR, no login needed)
+            docker compose pull showcase
+
+            # Restart with new image
+            docker compose up -d
+
+            # Cleanup old images
+            docker image prune -f
