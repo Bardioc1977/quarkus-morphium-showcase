@@ -44,7 +44,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
         <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
-        <quarkus.platform.version>3.32.3</quarkus.platform.version>
+        <quarkus.platform.version>3.36.2</quarkus.platform.version>
         <quarkus-morphium.version>1.2.0</quarkus-morphium.version>
         <morphium.version>6.2.5-SNAPSHOT</morphium.version>
         <compiler-plugin.version>3.13.0</compiler-plugin.version>
