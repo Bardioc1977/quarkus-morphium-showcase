@@ -43,9 +43,8 @@ jobs:
           java-version: 21
           cache: maven
 
-      # morphium / quarkus-morphium are not yet on Maven Central — they are resolved
-      # from the bundled local repo (lib/maven-repo), wired up as a file:// repository
-      # in pom.xml. No GitHub Packages auth needed.
+      # morphium / quarkus-morphium are published on Maven Central since 6.3.0, so no
+      # bundled local repo or GitHub Packages auth is needed.
       - name: Build and test
         run: mvn -B verify
 
