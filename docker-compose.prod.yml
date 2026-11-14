@@ -27,6 +27,9 @@ services:
       - "127.0.0.1:8090:8080"
     environment:
       - QUARKUS_PROFILE=prod
+    labels:
+      # Opt-in for Watchtower on the production host (pull-based updates).
+      - com.centurylinklabs.watchtower.enable=true
     restart: unless-stopped
 
 volumes:
